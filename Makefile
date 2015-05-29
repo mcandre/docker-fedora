@@ -1,4 +1,4 @@
-IMAGE=mcandre/docker-fedora:latest
+IMAGE=mcandre/docker-fedora:20
 ROOTFS=rootfs.tar.gz
 define GENERATE
 dnf install -y wget tar && \

@@ -2,7 +2,7 @@
 
 # ABOUT
 
-docker-fedora is a collection of [yumbootstrap](https://github.com/dozzie/yumbootstrap)-generated Fedora base images.
+docker-fedora is a collection of [chroot](http://man.cx/chroot) + [rpm](http://man.cx/rpm)-generated Fedora base images.
 
 # DOCKER HUB
 
@@ -12,7 +12,7 @@ https://registry.hub.docker.com/u/mcandre/docker-ubuntu/
 
 ```
 $ make
-docker run --rm mcandre/docker-fedora:latest sh -c 'cat /etc/*release*'
+docker run --rm mcandre/docker-fedora:20 sh -c 'cat /etc/*release*'
 Fedora release 20 (Heisenbug)
 NAME=Fedora
 VERSION="20 (Heisenbug)"
