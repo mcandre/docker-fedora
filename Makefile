@@ -1,11 +1,13 @@
 IMAGE=mcandre/docker-fedora:latest
 ROOTFS=rootfs.tar.gz
 define GENERATE
-dnf install -y mock && \
-adduser -g mock mock && \
-usermod -G mock mock && \
-su mock -c "/usr/bin/mock -r fedora-22-x86_64 --init" && \
-cd /var/lib/mock/fedora-22-x86_64/root && \
+dnf install -y wget tar && \
+mkdir -p /chroot/var/lib/rpm && \
+rpm --root /chroot --initdb && \
+wget ftp://rpmfind.net/linux/fedora/linux/releases/20/Everything/x86_64/os/Packages/f/fedora-release-20-1.noarch.rpm && \
+rpm --root /chroot -ivh fedora-release*rpm && \
+yum -y --nogpgcheck --installroot=/chroot groupinstall "minimal install" && \
+cd /chroot && \
 tar czvf /mnt/rootfs.tar.gz .
 endef
 
