@@ -1,0 +1,38 @@
+IMAGE=mcandre/docker-fedora:latest
+ROOTFS=rootfs.tar.gz
+define GENERATE
+dnf install -y mock && \
+adduser -g mock mock && \
+usermod -G mock mock && \
+su mock -c "/usr/bin/mock -r fedora-22-x86_64 --init" && \
+cd /var/lib/mock/fedora-22-x86_64/root && \
+tar czvf /mnt/rootfs.tar.gz .
+endef
+
+all: run
+
+$(ROOTFS):
+	docker run --rm --cap-add=SYS_ADMIN -v $$(pwd):/mnt -t fedora sh -c '$(GENERATE)'
+
+build: Dockerfile $(ROOTFS)
+	docker build -t $(IMAGE) .
+
+run: clean-containers build
+	docker run --rm $(IMAGE) sh -c 'cat /etc/*release*'
+
+clean-containers:
+	-docker ps -a | grep -v IMAGE | awk '{ print $$1 }' | xargs docker rm -f
+
+clean-images:
+	-docker images | grep -v IMAGE | grep $(IMAGE) | awk '{ print $$3 }' | xargs docker rmi -f
+
+clean-layers:
+	-docker images | grep -v IMAGE | grep none | awk '{ print $$3 }' | xargs docker rmi -f
+
+clean-rootfs:
+	-rm $(ROOTFS)
+
+clean: clean-containers clean-images clean-layers clean-rootfs
+
+publish:
+	docker push $(IMAGE)
