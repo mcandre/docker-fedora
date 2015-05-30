@@ -1,10 +1,10 @@
-IMAGE=mcandre/docker-fedora:13
+IMAGE=mcandre/docker-fedora:12
 ROOTFS=rootfs.tar.gz
 define GENERATE
 yum install -y wget tar && \
 mkdir -p /chroot/var/lib/rpm && \
 rpm --root /chroot --initdb && \
-wget http://archive.fedoraproject.org/pub/archive/fedora/linux/releases/13/Everything/x86_64/os/Packages/fedora-release-13-1.noarch.rpm && \
+wget http://archive.fedoraproject.org/pub/archive/fedora/linux/releases/12/Everything/x86_64/os/Packages/fedora-release-12-1.noarch.rpm && \
 rpm --root /chroot -ivh fedora-release*rpm && \
 yum -y --nogpgcheck --installroot=/chroot groupinstall "base" && \
 cd /chroot && \
@@ -14,7 +14,7 @@ endef
 all: run
 
 $(ROOTFS):
-	docker run --rm --cap-add=SYS_ADMIN -v $$(pwd):/mnt -t mcandre/docker-fedora:20 sh -c '$(GENERATE)'
+	docker run --rm --cap-add=SYS_ADMIN -v $$(pwd):/mnt -t mcandre/docker-fedora:17 sh -c '$(GENERATE)'
 
 build: Dockerfile $(ROOTFS)
 	docker build -t $(IMAGE) .
