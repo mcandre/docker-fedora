@@ -12,11 +12,11 @@ https://registry.hub.docker.com/u/mcandre/docker-ubuntu/
 
 ```
 $ make
-docker run --rm mcandre/docker-fedora:14 sh -c 'cat /etc/*release*'
-Fedora release 14 (Laughlin)
-Fedora release 14 (Laughlin)
-Fedora release 14 (Laughlin)
-cpe:/o:fedoraproject:fedora:14
+docker run --rm mcandre/docker-fedora:14 rpm -qa 'fedora-release*'
+rpmdb: __db_meta_setup: /var/lib/rpm/Name: unexpected file type or format
+error: cannot open Name index using db3 - Invalid argument (22)
+fedora-release-14-1.noarch
+fedora-release-notes-14.1.2-2.fc14.noarch
 ```
 
 # REQUIREMENTS

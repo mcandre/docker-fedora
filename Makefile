@@ -20,7 +20,7 @@ build: Dockerfile $(ROOTFS)
 	docker build -t $(IMAGE) .
 
 run: clean-containers build
-	docker run --rm $(IMAGE) sh -c 'cat /etc/*release*'
+	docker run --rm $(IMAGE) rpm -qa 'fedora-release*'
 
 clean-containers:
 	-docker ps -a | grep -v IMAGE | awk '{ print $$1 }' | xargs docker rm -f
