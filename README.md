@@ -12,11 +12,11 @@ https://registry.hub.docker.com/u/mcandre/docker-ubuntu/
 
 ```
 $ make
-docker run --rm mcandre/docker-fedora:14 sh -c 'cat /etc/*release*'
-Fedora release 14 (Laughlin)
-Fedora release 14 (Laughlin)
-Fedora release 14 (Laughlin)
-cpe:/o:fedoraproject:fedora:14
+docker run --rm mcandre/docker-fedora:13 sh -c 'cat /etc/*release*'
+Fedora release 13 (Goddard)
+Fedora release 13 (Goddard)
+Fedora release 13 (Goddard)
+cpe:/o:fedoraproject:fedora:13
 ```
 
 # REQUIREMENTS
