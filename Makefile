@@ -1,11 +1,12 @@
-IMAGE=mcandre/docker-fedora:11
+IMAGE=mcandre/docker-fedora:10
 ROOTFS=rootfs.tar.gz
 define GENERATE
 yum install -y wget tar && \
 mkdir -p /chroot/var/lib/rpm && \
 rpm --root /chroot --initdb && \
-wget http://archive.fedoraproject.org/pub/archive/fedora/linux/releases/11/Everything/x86_64/os/Packages/fedora-release-11-1.noarch.rpm && \
-rpm --root /chroot -ivh fedora-release*rpm && \
+wget http://archive.fedoraproject.org/pub/archive/fedora/linux/releases/10/Everything/x86_64/os/Packages/fedora-release-notes-10.0.0-1.noarch.rpm && \
+wget http://archive.fedoraproject.org/pub/archive/fedora/linux/releases/10/Everything/x86_64/os/Packages/fedora-release-10-1.noarch.rpm && \
+rpm --root /chroot -ivh --nodeps fedora-release*rpm && \
 yum -y --nogpgcheck --installroot=/chroot groupinstall "base" && \
 cd /chroot && \
 tar czvf /mnt/rootfs.tar.gz .
