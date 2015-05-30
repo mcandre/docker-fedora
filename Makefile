@@ -1,10 +1,11 @@
-IMAGE=mcandre/docker-fedora:16
+IMAGE=mcandre/docker-fedora:15
 ROOTFS=rootfs.tar.gz
 define GENERATE
 yum install -y wget tar && \
 mkdir -p /chroot/var/lib/rpm && \
 rpm --root /chroot --initdb && \
-wget http://archive.fedoraproject.org/pub/archive/fedora/linux/releases/16/Everything/x86_64/os/Packages/fedora-release-16-1.noarch.rpm && \
+wget http://archive.fedoraproject.org/pub/archive/fedora/linux/releases/15/Everything/x86_64/os/Packages/fedora-release-rawhide-15-1.noarch.rpm && \
+wget http://archive.fedoraproject.org/pub/archive/fedora/linux/releases/15/Everything/x86_64/os/Packages/fedora-release-15-1.noarch.rpm && \
 rpm --root /chroot -ivh fedora-release*rpm && \
 yum -y --nogpgcheck --installroot=/chroot groupinstall "base" && \
 cd /chroot && \

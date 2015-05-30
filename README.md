@@ -12,11 +12,11 @@ https://registry.hub.docker.com/u/mcandre/docker-ubuntu/
 
 ```
 $ make
-docker run --rm mcandre/docker-fedora:16 sh -c 'cat /etc/*release*'
-Fedora release 16 (Verne)
-Fedora release 16 (Verne)
-Fedora release 16 (Verne)
-cpe:/o:fedoraproject:fedora:16
+docker run --rm mcandre/docker-fedora:15 sh -c 'cat /etc/*release*'
+Fedora release 15 (Lovelock)
+Fedora release 15 (Lovelock)
+Fedora release 15 (Lovelock)
+cpe:/o:fedoraproject:fedora:15
 ```
 
 # REQUIREMENTS
