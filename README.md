@@ -12,9 +12,9 @@ https://registry.hub.docker.com/u/mcandre/docker-ubuntu/
 
 ```
 $ make
-docker run --rm mcandre/docker-fedora:10 sh -c "find /etc -type f -name '*release*' | xargs cat"
-cpe://o:fedora_project:fedora:10
-Fedora release 10 (Cambridge)
+docker run --rm mcandre/docker-fedora:9 sh -c "find /etc -type f -name '*release*' | xargs cat"
+cpe://o:fedora_project:fedora:9
+Fedora release 9 (Sulphur)
 ```
 
 # REQUIREMENTS
