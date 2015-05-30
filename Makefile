@@ -7,6 +7,7 @@ rpm --root /chroot --initdb && \
 wget http://archive.fedoraproject.org/pub/archive/fedora/linux/releases/14/Everything/x86_64/os/Packages/fedora-release-14-1.noarch.rpm && \
 rpm --root /chroot -ivh fedora-release*rpm && \
 yum -y --nogpgcheck --installroot=/chroot groupinstall "base" && \
+chroot /chroot sh -c "rm -rf /var/lib/rpm/__db* && /usr/lib/rpm/rpmdb_verify /var/lib/rpm/Name && rpm --rebuilddb" && \
 cd /chroot && \
 tar czvf /mnt/rootfs.tar.gz .
 endef
@@ -21,6 +22,7 @@ build: Dockerfile $(ROOTFS)
 
 run: clean-containers build
 	docker run --rm $(IMAGE) rpm -qa 'fedora-release*'
+	docker run --rm $(IMAGE) sh -c 'yum install -y ruby && ruby -v'
 
 clean-containers:
 	-docker ps -a | grep -v IMAGE | awk '{ print $$1 }' | xargs docker rm -f
