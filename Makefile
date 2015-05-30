@@ -1,11 +1,11 @@
-IMAGE=mcandre/docker-fedora:8
+IMAGE=mcandre/docker-fedora:7
 ROOTFS=rootfs.tar.gz
 define GENERATE
 yum install -y wget tar && \
 mkdir -p /chroot/var/lib/rpm && \
 rpm --root /chroot --initdb && \
-wget http://archive.fedoraproject.org/pub/archive/fedora/linux/releases/8/Everything/x86_64/os/Packages/fedora-release-notes-8.0.0-3.noarch.rpm && \
-wget http://archive.fedoraproject.org/pub/archive/fedora/linux/releases/8/Everything/x86_64/os/Packages/fedora-release-8-3.noarch.rpm && \
+wget http://archive.fedoraproject.org/pub/archive/fedora/linux/releases/7/Everything/x86_64/os/Fedora/fedora-release-notes-7.0.0-1.noarch.rpm && \
+wget http://archive.fedoraproject.org/pub/archive/fedora/linux/releases/7/Everything/x86_64/os/Fedora/fedora-release-7-3.noarch.rpm && \
 rpm --root /chroot -ivh --nodeps fedora-release*rpm && \
 yum -y --nogpgcheck --installroot=/chroot groupinstall "base" && \
 cd /chroot && \

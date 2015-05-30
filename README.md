@@ -12,8 +12,8 @@ https://registry.hub.docker.com/u/mcandre/docker-ubuntu/
 
 ```
 $ make
-docker run --rm mcandre/docker-fedora:8 sh -c "find /etc -type f -name '*release*' | xargs cat"
-Fedora release 8 (Werewolf)
+docker run --rm mcandre/docker-fedora:7 sh -c "find /etc -type f -name '*release*' | xargs cat"
+Fedora release 7 (Moonshine)
 ```
 
 # REQUIREMENTS
