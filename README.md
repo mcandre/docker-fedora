@@ -12,18 +12,11 @@ https://registry.hub.docker.com/u/mcandre/docker-ubuntu/
 
 ```
 $ make
-docker run --rm mcandre/docker-fedora:17 sh -c 'cat /etc/*release*'
-Fedora release 17 (Beefy Miracle)
-NAME=Fedora
-VERSION="17 (Beefy Miracle)"
-ID=fedora
-VERSION_ID=17
-PRETTY_NAME="Fedora 17 (Beefy Miracle)"
-ANSI_COLOR="0;34"
-CPE_NAME="cpe:/o:fedoraproject:fedora:17"
-Fedora release 17 (Beefy Miracle)
-Fedora release 17 (Beefy Miracle)
-cpe:/o:fedoraproject:fedora:17
+docker run --rm mcandre/docker-fedora:16 sh -c 'cat /etc/*release*'
+Fedora release 16 (Verne)
+Fedora release 16 (Verne)
+Fedora release 16 (Verne)
+cpe:/o:fedoraproject:fedora:16
 ```
 
 # REQUIREMENTS
