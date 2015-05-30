@@ -1,11 +1,11 @@
-IMAGE=mcandre/docker-fedora:22
+IMAGE=mcandre/docker-fedora:21
 ROOTFS=rootfs.tar.gz
 define GENERATE
 dnf install -y wget tar && \
 mkdir -p /chroot/var/lib/rpm && \
 rpm --root /chroot --initdb && \
-wget ftp://rpmfind.net/linux/fedora/linux/releases/22/Everything/x86_64/os/Packages/f/fedora-repos-22-1.noarch.rpm && \
-wget ftp://rpmfind.net/linux/fedora/linux/releases/22/Everything/x86_64/os/Packages/f/fedora-release-22-1.noarch.rpm && \
+wget ftp://fr2.rpmfind.net/linux/fedora/linux/releases/21/Everything/x86_64/os/Packages/f/fedora-repos-21-2.noarch.rpm && \
+wget ftp://fr2.rpmfind.net/linux/fedora/linux/releases/21/Everything/x86_64/os/Packages/f/fedora-release-21-2.noarch.rpm && \
 rpm --root /chroot -ivh --nodeps fedora-repos*rpm fedora-release*rpm && \
 yum -y --nogpgcheck --installroot=/chroot groupinstall "minimal install" && \
 cd /chroot && \
