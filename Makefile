@@ -4,8 +4,9 @@ define GENERATE
 dnf install -y wget tar && \
 mkdir -p /chroot/var/lib/rpm && \
 rpm --root /chroot --initdb && \
-wget ftp://rpmfind.net/linux/fedora/linux/releases/20/Everything/x86_64/os/Packages/f/fedora-release-20-1.noarch.rpm && \
-rpm --root /chroot -ivh fedora-release*rpm && \
+wget ftp://rpmfind.net/linux/fedora/linux/releases/22/Everything/x86_64/os/Packages/f/fedora-repos-22-1.noarch.rpm && \
+wget ftp://rpmfind.net/linux/fedora/linux/releases/22/Everything/x86_64/os/Packages/f/fedora-release-22-1.noarch.rpm && \
+rpm --root /chroot -ivh --nodeps fedora-repos*rpm fedora-release*rpm && \
 yum -y --nogpgcheck --installroot=/chroot groupinstall "minimal install" && \
 cd /chroot && \
 tar czvf /mnt/rootfs.tar.gz .
