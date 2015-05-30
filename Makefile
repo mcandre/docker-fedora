@@ -1,13 +1,24 @@
-IMAGE=mcandre/docker-fedora:6
+IMAGE=mcandre/docker-fedora:5
 ROOTFS=rootfs.tar.gz
 define GENERATE
 yum install -y wget tar && \
 mkdir -p /chroot/var/lib/rpm && \
 rpm --root /chroot --initdb && \
-wget ftp://ftp.pbone.net/mirror/archive.fedoraproject.org/fedora/linux/core/6/x86_64/os/Fedora/RPMS/fedora-release-notes-6-3.noarch.rpm && \
-wget ftp://ftp.pbone.net/mirror/archive.fedoraproject.org/fedora/linux/core/6/x86_64/os/Fedora/RPMS/fedora-release-6-4.noarch.rpm && \
+wget http://archives.fedoraproject.org/pub/archive/fedora/linux/core/5/x86_64/os/Fedora/RPMS/fedora-release-5-5.noarch.rpm && \
+cp -rv /mnt/yum.repos.d /etc && \
+cp -rv /mnt/yum.repos.d /chroot/etc && \
 rpm --root /chroot -ivh --nodeps fedora-release*rpm && \
+mkdir /chroot/proc && \
+mkdir /chroot/sys && \
+mkdir /chroot/dev && \
+mount -t proc /proc /chroot/proc && \
+mount -t sysfs /sys /chroot/sys && \
+mkdir /chroot/tmp && \
 yum -y --nogpgcheck --installroot=/chroot groupinstall "base" && \
+cp /mnt/repair-rpm.sh /chroot/repair-rpm.sh && \
+chroot /chroot /repair-rpm.sh && \
+umount /chroot/proc && \
+umount /chroot/sys && \
 cd /chroot && \
 tar czvf /mnt/rootfs.tar.gz .
 endef
@@ -15,7 +26,7 @@ endef
 all: run
 
 $(ROOTFS):
-	docker run --rm --cap-add=SYS_ADMIN -v $$(pwd):/mnt -t mcandre/docker-fedora:17 sh -c '$(GENERATE)'
+	docker run --rm --cap-add=SYS_ADMIN -v $$(pwd):/mnt -t mcandre/docker-fedora:10 sh -c '$(GENERATE)'
 
 build: Dockerfile $(ROOTFS)
 	docker build -t $(IMAGE) .

@@ -12,8 +12,14 @@ https://registry.hub.docker.com/u/mcandre/docker-ubuntu/
 
 ```
 $ make
-docker run --rm mcandre/docker-fedora:6 sh -c "find /etc -type f -name '*release*' | xargs cat"
-Fedora Core release 6 (Zod)
+warning: fedora-release-5-5.noarch.rpm: Header V3 DSA signature: NOKEY, key ID 4f2a6fd2
+Preparing...                ########################################### [100%]
+   1:fedora-release         ########################################### [100%]
+warning: %post(fedora-release-5-5.noarch) scriptlet failed, exit status 255
+Could not retrieve mirrorlist http://fedora.redhat.com/download/mirrors/fedora-core-5 error was
+[Errno 4] IOError: <urlopen error (-2, 'Name or service not known')>
+Error: Cannot retrieve repository metadata (repomd.xml) for repository: core. Please verify its path and try again
+make: *** [rootfs.tar.gz] Error 1
 ```
 
 # REQUIREMENTS
