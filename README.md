@@ -12,24 +12,18 @@ https://registry.hub.docker.com/u/mcandre/docker-ubuntu/
 
 ```
 $ make
-docker run --rm mcandre/docker-fedora:20 sh -c 'cat /etc/*release*'
-Fedora release 20 (Heisenbug)
+docker run --rm mcandre/docker-fedora:19 sh -c 'cat /etc/*release*'
+Fedora release 19 (Schrödinger’s Cat)
 NAME=Fedora
-VERSION="20 (Heisenbug)"
+VERSION="19 (Schrödinger’s Cat)"
 ID=fedora
-VERSION_ID=20
-PRETTY_NAME="Fedora 20 (Heisenbug)"
+VERSION_ID=19
+PRETTY_NAME="Fedora 19 (Schrödinger’s Cat)"
 ANSI_COLOR="0;34"
-CPE_NAME="cpe:/o:fedoraproject:fedora:20"
-HOME_URL="https://fedoraproject.org/"
-BUG_REPORT_URL="https://bugzilla.redhat.com/"
-REDHAT_BUGZILLA_PRODUCT="Fedora"
-REDHAT_BUGZILLA_PRODUCT_VERSION=20
-REDHAT_SUPPORT_PRODUCT="Fedora"
-REDHAT_SUPPORT_PRODUCT_VERSION=20
-Fedora release 20 (Heisenbug)
-Fedora release 20 (Heisenbug)
-cpe:/o:fedoraproject:fedora:20
+CPE_NAME="cpe:/o:fedoraproject:fedora:19"
+Fedora release 19 (Schrödinger’s Cat)
+Fedora release 19 (Schrödinger’s Cat)
+cpe:/o:fedoraproject:fedora:19
 ```
 
 # REQUIREMENTS

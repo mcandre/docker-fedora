@@ -1,10 +1,10 @@
-IMAGE=mcandre/docker-fedora:20
+IMAGE=mcandre/docker-fedora:19
 ROOTFS=rootfs.tar.gz
 define GENERATE
 dnf install -y wget tar && \
 mkdir -p /chroot/var/lib/rpm && \
 rpm --root /chroot --initdb && \
-wget ftp://rpmfind.net/linux/fedora/linux/releases/20/Everything/x86_64/os/Packages/f/fedora-release-20-1.noarch.rpm && \
+wget http://archive.fedoraproject.org/pub/archive/fedora/linux/releases/19/Everything/x86_64/os/Packages/f/fedora-release-19-2.noarch.rpm && \
 rpm --root /chroot -ivh fedora-release*rpm && \
 yum -y --nogpgcheck --installroot=/chroot groupinstall "minimal install" && \
 cd /chroot && \
