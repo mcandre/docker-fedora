@@ -1,12 +1,12 @@
-IMAGE=mcandre/docker-fedora:18
+IMAGE=mcandre/docker-fedora:17
 ROOTFS=rootfs.tar.gz
 define GENERATE
 yum install -y wget tar && \
 mkdir -p /chroot/var/lib/rpm && \
 rpm --root /chroot --initdb && \
-wget http://archive.fedoraproject.org/pub/archive/fedora/linux/releases/18/Everything/x86_64/os/Packages/f/fedora-release-18-1.noarch.rpm && \
+wget http://archive.fedoraproject.org/pub/archive/fedora/linux/releases/17/Everything/x86_64/os/Packages/f/fedora-release-17-1.noarch.rpm && \
 rpm --root /chroot -ivh fedora-release*rpm && \
-yum -y --nogpgcheck --installroot=/chroot groupinstall "minimal install" && \
+yum -y --nogpgcheck --installroot=/chroot groupinstall "base" && \
 cd /chroot && \
 tar czvf /mnt/rootfs.tar.gz .
 endef

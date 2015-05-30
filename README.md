@@ -12,18 +12,18 @@ https://registry.hub.docker.com/u/mcandre/docker-ubuntu/
 
 ```
 $ make
-docker run --rm mcandre/docker-fedora:18 sh -c 'cat /etc/*release*'
-Fedora release 18 (Spherical Cow)
+docker run --rm mcandre/docker-fedora:17 sh -c 'cat /etc/*release*'
+Fedora release 17 (Beefy Miracle)
 NAME=Fedora
-VERSION="18 (Spherical Cow)"
+VERSION="17 (Beefy Miracle)"
 ID=fedora
-VERSION_ID=18
-PRETTY_NAME="Fedora 18 (Spherical Cow)"
+VERSION_ID=17
+PRETTY_NAME="Fedora 17 (Beefy Miracle)"
 ANSI_COLOR="0;34"
-CPE_NAME="cpe:/o:fedoraproject:fedora:18"
-Fedora release 18 (Spherical Cow)
-Fedora release 18 (Spherical Cow)
-cpe:/o:fedoraproject:fedora:18
+CPE_NAME="cpe:/o:fedoraproject:fedora:17"
+Fedora release 17 (Beefy Miracle)
+Fedora release 17 (Beefy Miracle)
+cpe:/o:fedoraproject:fedora:17
 ```
 
 # REQUIREMENTS
