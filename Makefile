@@ -1,10 +1,10 @@
-IMAGE=mcandre/docker-fedora:12
+IMAGE=mcandre/docker-fedora:11
 ROOTFS=rootfs.tar.gz
 define GENERATE
 yum install -y wget tar && \
 mkdir -p /chroot/var/lib/rpm && \
 rpm --root /chroot --initdb && \
-wget http://archive.fedoraproject.org/pub/archive/fedora/linux/releases/12/Everything/x86_64/os/Packages/fedora-release-12-1.noarch.rpm && \
+wget http://archive.fedoraproject.org/pub/archive/fedora/linux/releases/11/Everything/x86_64/os/Packages/fedora-release-11-1.noarch.rpm && \
 rpm --root /chroot -ivh fedora-release*rpm && \
 yum -y --nogpgcheck --installroot=/chroot groupinstall "base" && \
 cd /chroot && \
@@ -20,7 +20,7 @@ build: Dockerfile $(ROOTFS)
 	docker build -t $(IMAGE) .
 
 run: clean-containers build
-	docker run --rm $(IMAGE) sh -c 'cat /etc/*release*'
+	docker run --rm $(IMAGE) sh -c "find /etc -type f -name '*release*' | xargs cat"
 
 clean-containers:
 	-docker ps -a | grep -v IMAGE | awk '{ print $$1 }' | xargs docker rm -f
