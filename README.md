@@ -12,9 +12,9 @@ https://registry.hub.docker.com/u/mcandre/docker-ubuntu/
 
 ```
 $ make
-docker run --rm mcandre/docker-fedora:11 sh -c "find /etc -type f -name '*release*' | xargs cat"
-cpe:/o:fedoraproject:fedora:11
-Fedora release 11 (Leonidas)
+docker run --rm mcandre/docker-fedora:11 rpm -qa 'fedora-release*'
+fedora-release-notes-11.0.4-1.fc11.noarch
+fedora-release-11-1.noarch
 ```
 
 # REQUIREMENTS
