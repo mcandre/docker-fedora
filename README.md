@@ -12,18 +12,18 @@ https://registry.hub.docker.com/u/mcandre/docker-ubuntu/
 
 ```
 $ make
-docker run --rm mcandre/docker-fedora:19 sh -c 'cat /etc/*release*'
-Fedora release 19 (Schrödinger’s Cat)
+docker run --rm mcandre/docker-fedora:18 sh -c 'cat /etc/*release*'
+Fedora release 18 (Spherical Cow)
 NAME=Fedora
-VERSION="19 (Schrödinger’s Cat)"
+VERSION="18 (Spherical Cow)"
 ID=fedora
-VERSION_ID=19
-PRETTY_NAME="Fedora 19 (Schrödinger’s Cat)"
+VERSION_ID=18
+PRETTY_NAME="Fedora 18 (Spherical Cow)"
 ANSI_COLOR="0;34"
-CPE_NAME="cpe:/o:fedoraproject:fedora:19"
-Fedora release 19 (Schrödinger’s Cat)
-Fedora release 19 (Schrödinger’s Cat)
-cpe:/o:fedoraproject:fedora:19
+CPE_NAME="cpe:/o:fedoraproject:fedora:18"
+Fedora release 18 (Spherical Cow)
+Fedora release 18 (Spherical Cow)
+cpe:/o:fedoraproject:fedora:18
 ```
 
 # REQUIREMENTS
