@@ -25,22 +25,20 @@
 
 [development]
 name=Fedora Core - Development
-baseurl=http://archives.fedoraproject.org/pub/archive/fedora/linux/core/development/$basearch/os/
-mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=rawhide&arch=$basearch
+baseurl=http://archive.fedoraproject.org/pub/archive/fedora/linux/core/development/$basearch/
+#mirrorlist=http://fedora.redhat.com/download/mirrors/fedora-core-rawhide
 enabled=0
 gpgcheck=0
 
 [development-debuginfo]
 name=Fedora Core - Development - Debug
-baseurl=http://archives.fedoraproject.org/pub/archive/fedora/linux/core/development/$basearch/debug/
-mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=rawhide-debug&arch=$basearch
+baseurl=http://archive.fedoraproject.org/pub/archive/fedora/linux/core/development/$basearch/debug/
 enabled=0
 gpgcheck=0
 
 [development-source]
 name=Fedora Core - Development - Source
-baseurl=http://archives.fedoraproject.org/pub/archive/fedora/linux/core/development/source/SRPMS/
-mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=rawhide-source&arch=$basearch
+baseurl=http://archive.fedoraproject.org/pub/archive/fedora/linux/core/development/SRPMS/
 enabled=0
 gpgcheck=0
 
