@@ -7,7 +7,17 @@ rpm --root /chroot --initdb && \
 wget http://archive.fedoraproject.org/pub/archive/fedora/linux/releases/9/Everything/x86_64/os/Packages/fedora-release-notes-9.0.0-1.noarch.rpm && \
 wget http://archive.fedoraproject.org/pub/archive/fedora/linux/releases/9/Everything/x86_64/os/Packages/fedora-release-9-2.noarch.rpm && \
 rpm --root /chroot -ivh --nodeps fedora-release*rpm && \
+mkdir /chroot/proc && \
+mkdir /chroot/sys && \
+mkdir /chroot/dev && \
+mount -t proc /proc /chroot/proc && \
+mount -t sysfs /sys /chroot/sys && \
 yum -y --nogpgcheck --installroot=/chroot groupinstall "base" && \
+yum -y --nogpgcheck --installroot=/chroot install db4-utils compat-db45 && \
+cp /mnt/repair-rpm.sh /chroot/repair-rpm.sh && \
+chroot /chroot /repair-rpm.sh && \
+umount /chroot/proc && \
+umount /chroot/sys && \
 cd /chroot && \
 tar czvf /mnt/rootfs.tar.gz .
 endef
@@ -22,6 +32,7 @@ build: Dockerfile $(ROOTFS)
 
 run: clean-containers build
 	docker run --rm $(IMAGE) sh -c "find /etc -type f -name '*release*' | xargs cat"
+	docker run --rm $(IMAGE) sh -c 'yum install -y ruby && ruby -v'
 
 clean-containers:
 	-docker ps -a | grep -v IMAGE | awk '{ print $$1 }' | xargs docker rm -f
