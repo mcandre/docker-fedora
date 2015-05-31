@@ -1,10 +1,10 @@
-IMAGE=mcandre/docker-fedora:4
+IMAGE=mcandre/docker-fedora:3
 ROOTFS=rootfs.tar.gz
 define GENERATE
 yum install -y wget tar && \
 mkdir -p /chroot/var/lib/rpm && \
 rpm --root /chroot --initdb && \
-wget http://archives.fedoraproject.org/pub/archive/fedora/linux/core/4/x86_64/os/Fedora/RPMS/fedora-release-4-2.noarch.rpm && \
+wget http://archives.fedoraproject.org/pub/archive/fedora/linux/core/3/x86_64/os/Fedora/RPMS/fedora-release-3-9.x86_64.rpm && \
 rpm --root /chroot -ivh --nodeps fedora-release*rpm && \
 mkdir /chroot/proc && \
 mkdir /chroot/sys && \
@@ -17,8 +17,10 @@ yum --installroot=/chroot clean all && \
 yum -y --nogpgcheck --installroot=/chroot groupinstall "base" && \
 cp /mnt/repair-rpm.sh /chroot/repair-rpm.sh && \
 chroot /chroot /repair-rpm.sh && \
+chroot /chroot rpm --import /usr/share/rhn/RPM-GPG-KEY-fedora && \
 umount /chroot/proc && \
 umount /chroot/sys && \
+find /chroot/var/log -type f -delete && \
 cd /chroot && \
 tar czvf /mnt/rootfs.tar.gz .
 endef
@@ -33,7 +35,7 @@ build: Dockerfile $(ROOTFS)
 
 run: clean-containers build
 	docker run --rm $(IMAGE) sh -c "find /etc -type f -name '*release*' | xargs cat"
-	docker run --rm $(IMAGE) sh -c 'yum install -y ruby && ruby -v'
+	docker run --rm $(IMAGE) sh -c 'yum -y install ruby && ruby -v'
 
 clean-containers:
 	-docker ps -a | grep -v IMAGE | awk '{ print $$1 }' | xargs docker rm -f
