@@ -1,10 +1,10 @@
-IMAGE=mcandre/docker-fedora:5
+IMAGE=mcandre/docker-fedora:4
 ROOTFS=rootfs.tar.gz
 define GENERATE
 yum install -y wget tar && \
 mkdir -p /chroot/var/lib/rpm && \
 rpm --root /chroot --initdb && \
-wget http://archives.fedoraproject.org/pub/archive/fedora/linux/core/5/x86_64/os/Fedora/RPMS/fedora-release-5-5.noarch.rpm && \
+wget http://archives.fedoraproject.org/pub/archive/fedora/linux/core/4/x86_64/os/Fedora/RPMS/fedora-release-4-2.noarch.rpm && \
 rpm --root /chroot -ivh --nodeps fedora-release*rpm && \
 mkdir /chroot/proc && \
 mkdir /chroot/sys && \

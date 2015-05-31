@@ -1,8 +1,9 @@
+[development]
 # These packages are untested and still under development. This
 # repository is used for updates to test releases, and for
 # development of new releases.
 #
-# This repository can see significant daily turnover and major
+# This repository can see significant daily turn over and can see major
 # functionality changes which cause unexpected problems with other
 # development packages. Please use these packages if you want to work
 # with the Fedora developers by testing these new development packages.
@@ -15,30 +16,11 @@
 # testing and troubleshooting for development packages in conjunction
 # with developing new releases.
 #
-# More information is available at http://fedoraproject.org/wiki/Testing 
-#
-# Reproducible and reportable issues should be filed at
-# http://bugzilla.redhat.com/.
-#
+# Reportable issues should be filed at bugzilla.redhat.com
 # Product: Fedora Core
 # Version: devel
-
-[development]
-name=Fedora Core - Development
+name=Fedora Core $releasever - Development Tree
 baseurl=http://archive.fedoraproject.org/pub/archive/fedora/linux/core/development/$basearch/
 #mirrorlist=http://fedora.redhat.com/download/mirrors/fedora-core-rawhide
 enabled=0
 gpgcheck=0
-
-[development-debuginfo]
-name=Fedora Core - Development - Debug
-baseurl=http://archive.fedoraproject.org/pub/archive/fedora/linux/core/development/$basearch/debug/
-enabled=0
-gpgcheck=0
-
-[development-source]
-name=Fedora Core - Development - Source
-baseurl=http://archive.fedoraproject.org/pub/archive/fedora/linux/core/development/SRPMS/
-enabled=0
-gpgcheck=0
-
