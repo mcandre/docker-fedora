@@ -40,7 +40,7 @@ $ sudo yum install docker-io
 
 * [VirtualBox](https://www.virtualbox.org/)
 * [Vagrant](https://www.vagrantup.com/)
-* [boot2docker](http://boot2docker.io/)
+* [boot2docker](http://boot2docker.io/) with devicemapper
 
 ### Mac OS X
 
@@ -59,4 +59,12 @@ $ brew install boot2docker
 
 ```
 > chocolatey install docker make
+```
+
+### Enable Device Mapper
+
+```
+$ boot2docker ssh
+docker@boot2docker:~$ echo "EXTRA_ARGS='--storage-driver=devicemapper'" | sudo tee -a /var/lib/boot2docker/profile
+docker@boot2docker:~$ sudo /etc/init.d/docker restart
 ```
