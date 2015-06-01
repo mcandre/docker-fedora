@@ -6,7 +6,7 @@ docker-fedora is a collection of [chroot](http://man.cx/chroot) + [rpm](http://m
 
 # DOCKER HUB
 
-https://registry.hub.docker.com/u/mcandre/docker-ubuntu/
+https://registry.hub.docker.com/u/mcandre/docker-fedora/
 
 # EXAMPLE
 
