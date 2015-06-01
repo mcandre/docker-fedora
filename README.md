@@ -12,7 +12,7 @@ https://registry.hub.docker.com/u/mcandre/docker-ubuntu/
 
 ```
 $ make
-docker run --rm mcandre/docker-fedora:23 sh -c 'cat /etc/*release*'
+docker run --rm mcandre/docker-fedora:rawhide sh -c 'cat /etc/*release*'
 Fedora release 23 (Rawhide)
 NAME=Fedora
 VERSION="23 (Rawhide)"
