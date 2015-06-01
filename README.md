@@ -12,25 +12,25 @@ https://registry.hub.docker.com/u/mcandre/docker-ubuntu/
 
 ```
 $ make
-docker run --rm mcandre/docker-fedora:22 sh -c 'cat /etc/*release*'
-Fedora release 22 (Twenty Two)
+docker run --rm mcandre/docker-fedora:23 sh -c 'cat /etc/*release*'
+Fedora release 23 (Rawhide)
 NAME=Fedora
-VERSION="22 (Twenty Two)"
+VERSION="23 (Rawhide)"
 ID=fedora
-VERSION_ID=22
-PRETTY_NAME="Fedora 22 (Twenty Two)"
+VERSION_ID=23
+PRETTY_NAME="Fedora 23 (Rawhide)"
 ANSI_COLOR="0;34"
-CPE_NAME="cpe:/o:fedoraproject:fedora:22"
+CPE_NAME="cpe:/o:fedoraproject:fedora:23"
 HOME_URL="https://fedoraproject.org/"
 BUG_REPORT_URL="https://bugzilla.redhat.com/"
 REDHAT_BUGZILLA_PRODUCT="Fedora"
-REDHAT_BUGZILLA_PRODUCT_VERSION=22
+REDHAT_BUGZILLA_PRODUCT_VERSION=Rawhide
 REDHAT_SUPPORT_PRODUCT="Fedora"
-REDHAT_SUPPORT_PRODUCT_VERSION=22
+REDHAT_SUPPORT_PRODUCT_VERSION=Rawhide
 PRIVACY_POLICY_URL=https://fedoraproject.org/wiki/Legal:PrivacyPolicy
-Fedora release 22 (Twenty Two)
-Fedora release 22 (Twenty Two)
-cpe:/o:fedoraproject:fedora:22
+Fedora release 23 (Rawhide)
+Fedora release 23 (Rawhide)
+cpe:/o:fedoraproject:fedora:23
 ```
 
 # REQUIREMENTS
