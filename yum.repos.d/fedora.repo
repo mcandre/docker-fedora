@@ -1,6 +1,6 @@
 [base]
-name=Fedora Core $releasever - $basearch - Base
-baseurl=http://archive.fedoraproject.org/pub/archive/fedora/linux/core/$releasever/$basearch/os/
+name=Fedora Core $releasever - i386 - Base
+baseurl=http://archive.fedoraproject.org/pub/archive/fedora/linux/core/$releasever/i386/os/
 #mirrorlist=http://fedora.redhat.com/download/mirrors/fedora-core-$releasever
 enabled=1
-gpgcheck=1
+gpgcheck=0
