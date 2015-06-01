@@ -12,10 +12,8 @@ https://registry.hub.docker.com/u/mcandre/docker-ubuntu/
 
 ```
 $ make
-docker run --rm mcandre/docker-fedora:3 sh -c "find /etc -type f -name '*release*' | xargs cat"
-JPackage release 1.5 (Red Hat (FC-3)) for noarch
-LSB_VERSION="1.3"
-Fedora Core release 3 (Heidelberg)
+docker run --rm mcandre/docker-fedora:2 sh -c "find /etc -type f -name '*release*' | xargs cat"
+Fedora Core release 2 (Tettnang)
 ```
 
 # REQUIREMENTS

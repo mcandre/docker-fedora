@@ -1,25 +1,31 @@
-IMAGE=mcandre/docker-fedora:3
+IMAGE=mcandre/docker-fedora:2
 ROOTFS=rootfs.tar.gz
 define GENERATE
-yum install -y wget tar && \
+yum install -y wget tar rpm-build rpmrebuild yum-plugin-downloadonly && \
 mkdir -p /chroot/var/lib/rpm && \
 rpm --root /chroot --initdb && \
-wget http://archives.fedoraproject.org/pub/archive/fedora/linux/core/3/x86_64/os/Fedora/RPMS/fedora-release-3-9.x86_64.rpm && \
+wget http://archives.fedoraproject.org/pub/archive/fedora/linux/core/2/x86_64/os/Fedora/RPMS/fedora-release-2-5.x86_64.rpm && \
 rpm --root /chroot -ivh --nodeps fedora-release*rpm && \
 mkdir /chroot/proc && \
 mkdir /chroot/sys && \
 mkdir /chroot/dev && \
 mount -t proc /proc /chroot/proc && \
 mount -t sysfs /sys /chroot/sys && \
+mount -t tmpfs /dev /chroot/dev && \
 mkdir /chroot/tmp && \
 cp -r /mnt/yum.repos.d /chroot/etc && \
-yum --installroot=/chroot clean all && \
-yum -y --nogpgcheck --installroot=/chroot groupinstall "base" && \
+yum -y --nogpgcheck --installroot=/chroot --downloadonly groupinstall "base"; true && \
+rpmrebuild --change-spec-pre="cat /mnt/dev-preinstall.sh" -p /chroot/var/cache/yum/base/packages/dev-3.3.13-1.x86_64.rpm && \
+cp /root/rpmbuild/RPMS/x86_64/dev-3.3.13-1.x86_64.rpm /chroot/var/cache/yum/base/packages && \
+yum -y --nogpgcheck --installroot=/chroot localinstall '/chroot/var/cache/yum/base/packages/*.rpm' && \
 cp /mnt/repair-rpm.sh /chroot/repair-rpm.sh && \
 chroot /chroot /repair-rpm.sh && \
 chroot /chroot rpm --import /usr/share/rhn/RPM-GPG-KEY-fedora && \
+cp /mnt/yum.conf /chroot/etc/yum.conf && \
+rm -rf /chroot/var/cache/yum/base/packages/*.rpm && \
 umount /chroot/proc && \
 umount /chroot/sys && \
+umount /chroot/dev && \
 find /chroot/var/log -type f -delete && \
 cd /chroot && \
 tar czvf /mnt/rootfs.tar.gz .
